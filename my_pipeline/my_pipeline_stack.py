@@ -13,9 +13,9 @@ class MyPipelineStack(Stack):
 
         # The code that defines your stack goes here
         pipeline =  CodePipeline(self, "Pipeline", 
-                    pipeline_name="MyPipeline", cross_account_keys=False, 
+                    pipeline_name="my-pipelineGrg", 
                     synth=ShellStep("Synth",
-                        input=CodePipelineSource.git_hub("gregonometry/my-pipeline.git", "main"),
+                        input=CodePipelineSource.git_hub("github.com:gregonometry/my-pipeline", "main"),
                         commands=["npm install -g aws-cdk", "python -m pip install -r requirements.txt", "cdk synth"]
                     )
                 )
