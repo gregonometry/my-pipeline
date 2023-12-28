@@ -15,13 +15,13 @@ class MyPipelineStack(Stack):
         pipeline =  CodePipeline(self, "Pipeline", 
                     pipeline_name="my-pipelineGrg", 
                     synth=ShellStep("Synth",
-                        input=CodePipelineSource.git_hub("github.com:gregonometry/my-pipeline", "main"),
+                        input=CodePipelineSource.connection("gregonometry/my-pipeline", "main", connection_arn="arn:aws:codestar-connections:us-east-1:707231838635:connection/5b977032-777d-4ec9-82d2-c1fdf140c1a1"),
                         commands=["npm install -g aws-cdk", "python -m pip install -r requirements.txt", "cdk synth"]
                     )
                 )
 
         # example resource
-        # queue = sqs.Queue(
+        # queue = sqs.Queue( 
         #     self, "MyPipelineQueue",
         #     visibility_timeout=Duration.seconds(300),
         # )
